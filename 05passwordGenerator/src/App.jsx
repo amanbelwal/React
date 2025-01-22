@@ -37,13 +37,14 @@ function App() {
         value={password}
         className='outline-none w-full py-1 px-3'
         placeholder='password'
-        readOnly/>
+        readOnly
+        />
         <button className='outline-none bg-blue-600 text-white px-3 py-0.5 shrink-0 '
         onClick={copypassword}
         >Copy</button>
       </div>
       <div className='flex text-sm gap-x-2 '>
-        <div className='flex items-center gap-x-1 text-blue-600'>
+        <div className='flex slider items-center gap-x-1 text-blue-600'>
           <input 
           type='range'
           min={6}

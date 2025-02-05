@@ -16,7 +16,7 @@ http.route({
       }
       const svix_id = request.headers.get("svix-id");
       const svix_signature =request.headers.get("svix-signature");
-      const svix_timestamp = request.headers.get("svix-timestamps");  
+      const svix_timestamp = request.headers.get("svix-timestamp");  
 
       if(!svix_id || !svix_signature || !svix_timestamp)
          return new Response("svix Headers mismatched",{status:400,});
@@ -24,8 +24,8 @@ http.route({
       const payload = await request.json();
       const body = JSON.stringify(payload);
       
-      let evt : WebhookEvent;
       const wh = new Webhook(webhookSecret)
+      let evt : WebhookEvent;
       try{
         evt = wh.verify(body,{
             "svix-id":svix_id,
@@ -52,7 +52,7 @@ http.route({
         }
          catch(error)
         {
-            console.log("error creating user");
+            console.log("error creating user",error);
            return new Response("error creating user",{status:500});
         }
     }
